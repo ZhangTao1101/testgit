@@ -1,0 +1,8 @@
+server:  port: 8181  spring:  application:    name: TwoPost 
+eureka:
+  client:
+    registerWithEureka: true     #是否将自身注册到容器中，本身就是注册中心
+    fetch-registry: false       #是否从eureka中获取信息，不需要注册就不需要获取
+    
+    service-url:                 
+      defaultZone: http://127.0.0.2:8081/eureka/ribbon:  eureka:    enabled: true      zuul:  routes:    item-service:  One #可以不写    path: /item-service/**     #配置请求url规则    #url: http://localhost:8080    #对应的微服务地址      serviceId: OnePost    
